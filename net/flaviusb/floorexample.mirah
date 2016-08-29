@@ -1,4 +1,4 @@
-import org.bimserver.models.ifc2x3tc1.IfcBuildingStorey;
+import org.bimserver.models.ifc2x3tc1.*;
 
 
 make_query("net.flaviusb", "floorexample") do
