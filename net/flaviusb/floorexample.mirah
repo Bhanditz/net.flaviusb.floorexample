@@ -7,6 +7,10 @@ import org.bimserver.emf.IfcModelInterfaceException
 package net.flaviusb do
   class floorexample
     implements nz.ac.auckland.cs.QueryInterface
+
+    def initialize()
+      super()
+    end
     
     def query(model: IfcModelInterface, reporter: Reporter, modelHelper: ModelHelper): IfcModelInterface
       return nil
