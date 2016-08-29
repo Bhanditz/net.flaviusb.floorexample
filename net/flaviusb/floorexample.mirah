@@ -7,7 +7,6 @@ import mirah.lang.ast.Package
 import mirah.lang.ast.SimpleString
 
 macro def make_query(package_name:SimpleString, mvd_name, block_query: Block)
-  #pkg = package_name.string_value
   Package.new(package_name, quote {
     class `mvd_name`
       implements nz.ac.auckland.cs.QueryInterface
