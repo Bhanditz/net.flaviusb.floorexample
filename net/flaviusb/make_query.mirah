@@ -21,3 +21,4 @@ macro def make_query(package_name:SimpleString, mvd_name, block_query: Block)
     end
   })
 end
+
