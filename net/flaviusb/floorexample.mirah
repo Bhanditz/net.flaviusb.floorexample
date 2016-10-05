@@ -20,49 +20,45 @@ make_query("net.flaviusb", "floorexample") do
       end
     end
   end
-  model.getAll(IfcSpace.class).each do |space|
-    modelHelper.copy(space, false)
+#  model.getAll(IfcSpace.class).each do |space|
+#    modelHelper.copy(space, false)
     # First we need to get the various coordinates, to compute the new coordinates
-    space.getReferencesElement().each do |references_element|
-      # We want to filter on only the IfcLocalPlacements
-      case references_element
-      when IfcLocalPlacement
-        references_element.getRelativePlacement().each do |local_placement|
-          placement = local_placement.getLocation()
-          case placement
-          when IfcAxis2Placement3D
-            point = 
-              case point
-              when IfcCartesianPoint
-                # We have the point
-                point
-              end
-            end
-          end
-        end
-      end
-    end
-    # Then we get all of the child elements
-    space.getContainsElements().each do |contained_element|
-      case contained_element
-
-      end
-    end
-    space.getChildren().each do |child|
-      case child
-      when IfcSlab
-        modelHelper.copy(child, false)
-      when IfcWallStandardCase
-        modelHelper.copy(child, false)
-      when IfcWall
-        modelHelper.copy(child, false)
-      when IfcDoor
-        modelHelper.copy(child, false)
-      when IfcWindow
-        modelHelper.copy(child, false)
-      end
-    end
-  end
+#    space.getReferencesElement().only_type do |references_element: IfcLocalPlacement|
+#      references_element.getRelativePlacement().each do |local_placement|
+#        placement = local_placement.getLocation()
+#        case placement
+#        when IfcAxis2Placement3D
+#          point = 
+#            case point
+#            when IfcCartesianPoint
+#              # We have the point
+#              point
+#            end
+#          end
+#        end
+#      end
+#    end
+#    # Then we get all of the child elements
+#    space.getContainsElements().each do |contained_element|
+#      case contained_element
+#
+#      end
+#    end
+#    space.getChildren().each do |child|
+#      case child
+#      when IfcSlab
+#        modelHelper.copy(child, false)
+#      when IfcWallStandardCase
+#        modelHelper.copy(child, false)
+#      when IfcWall
+#        modelHelper.copy(child, false)
+#      when IfcDoor
+#        modelHelper.copy(child, false)
+#      when IfcWindow
+#        modelHelper.copy(child, false)
+#      end
+#    end
+#  end
   modelHelper.getTargetModel()
 end
 
