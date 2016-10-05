@@ -3,8 +3,6 @@ import org.bimserver.models.ifc2x3tc1.*;
 
 make_query("net.flaviusb", "floorexample") do
   stories = model.getAll(IfcBuildingStorey.class)
-  lowestElevation = None
-  lowestStorey = None
   lowestElevation = 0.0
   lowestStorey = nil
   stories.each do |storey: IfcBuildingStorey|
@@ -20,10 +18,11 @@ make_query("net.flaviusb", "floorexample") do
       end
     end
   end
-#  model.getAll(IfcSpace.class).each do |space|
-#    modelHelper.copy(space, false)
+  model.getAll(IfcSpace.class).each do |space|
+    modelHelper.copy(space, false)
     # First we need to get the various coordinates, to compute the new coordinates
-#    space.getReferencesElement().only_type do |references_element: IfcLocalPlacement|
+    space.getReferencesElements().each do |connection: IfcRelReferencedInSpatialStructure|
+      #connection.getRelatedElements.only_type do |references_element: IfcLocalPlacement|
 #      references_element.getRelativePlacement().each do |local_placement|
 #        placement = local_placement.getLocation()
 #        case placement
@@ -35,9 +34,9 @@ make_query("net.flaviusb", "floorexample") do
 #              point
 #            end
 #          end
-#        end
-#      end
-#    end
+        end
+      end
+    end
 #    # Then we get all of the child elements
 #    space.getContainsElements().each do |contained_element|
 #      case contained_element
